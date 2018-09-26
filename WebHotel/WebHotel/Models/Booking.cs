@@ -19,6 +19,9 @@ namespace WebHotel.Models
 
         public decimal Cost { get; set; }
 
+        public Room TheRoom { get; set; }
+
+        public Customer TheCustomer { get; set; }
 
     }
 }

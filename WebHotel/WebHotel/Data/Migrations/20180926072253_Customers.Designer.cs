@@ -11,9 +11,10 @@ using WebHotel.Data;
 namespace WebHotel.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180926072253_Customers")]
+    partial class Customers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,42 +177,15 @@ namespace WebHotel.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("WebHotel.Models.Booking", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CheckIn");
-
-                    b.Property<DateTime>("CheckOut");
-
-                    b.Property<decimal>("Cost");
-
-                    b.Property<string>("CustomerEmail");
-
-                    b.Property<int>("RoomID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CustomerEmail");
-
-                    b.HasIndex("RoomID");
-
-                    b.ToTable("Booking");
-                });
-
             modelBuilder.Entity("WebHotel.Models.Customer", b =>
                 {
                     b.Property<string>("Email");
 
-                    b.Property<string>("GivenName")
-                        .IsRequired();
+                    b.Property<string>("GivenName");
 
-                    b.Property<string>("Postcode")
-                        .IsRequired();
+                    b.Property<string>("Postcode");
 
-                    b.Property<string>("Surname")
-                        .IsRequired();
+                    b.Property<string>("Surname");
 
                     b.HasKey("Email");
 
@@ -276,18 +250,6 @@ namespace WebHotel.Data.Migrations
                     b.HasOne("WebHotel.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebHotel.Models.Booking", b =>
-                {
-                    b.HasOne("WebHotel.Models.Customer", "TheCustomer")
-                        .WithMany("TheBookings")
-                        .HasForeignKey("CustomerEmail");
-
-                    b.HasOne("WebHotel.Models.Room", "TheRoom")
-                        .WithMany("TheBookings")
-                        .HasForeignKey("RoomID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

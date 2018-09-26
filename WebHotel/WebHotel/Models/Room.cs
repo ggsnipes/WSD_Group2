@@ -15,6 +15,6 @@ namespace WebHotel.Models
 
         public decimal Price { get; set; }
 
-
+        public ICollection<Booking> TheBookings { get; set; }
     }
 }
