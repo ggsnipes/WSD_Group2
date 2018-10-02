@@ -21,21 +21,37 @@ namespace WebHotel.Data.Migrations
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true);
-/*
+
+
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                 table: "AspNetUserTokens",
                 column: "UserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade); */
+                onDelete: ReferentialAction.Cascade); 
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                table: "AspNetUserTokens",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-        /*    migrationBuilder.DropForeignKey(
+
+            migrationBuilder.DropForeignKey(
                 name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens"); */
+                table: "AspNetUserTokens"); 
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                table: "AspNetUserTokens");
+
 
             migrationBuilder.DropIndex(
                 name: "RoleNameIndex",
